@@ -85,6 +85,9 @@ app.post('/api/guardarDatos', async (req, res) => {
         noControl, lavadora, celular, computadora, automovil, calentador, predial, luz, alimentacion, renta, agua, transporte, telefonoGastos, gas, vestido, educacion, diversiones, otros, servicioMedico, relacionTrabajo, beneficiosCapacitacion, motivoParticipacion, datosObservacion, porcentajeAutorizado, noBaucher, becasAutorizadas, aplicador
       ];
 
+      console.log("Valores que se intentan insertar en datos_formulario:");
+console.log(valoresFormulario);
+
       await pool.query(formularioQuery, valoresFormulario)
   
       // Enviar una respuesta de éxito

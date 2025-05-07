@@ -1,5 +1,5 @@
 // import doc from "pdfkit";
-import {generarPrimerPagina, generarSegundaPagina} from "./funciones.js";
+import {generarPrimerPagina, generarSegundaPagina, generarTercerPagina} from "./funciones.js";
 
 const especialityForm = document.querySelector('#especialidad');
 const group = document.querySelector('#grupo');
@@ -142,13 +142,13 @@ function guardarAlumno(e) {
         "hogarOtro",
         "otra"
     ]
-    const validacionAlumno = prevenirCreacionPDF(datosAlumnos, camposOpciones);
-    const validarFormulario = prevenirCreacionPDF(datosFormulario, camposOpciones)
+    // const validacionAlumno = prevenirCreacionPDF(datosAlumnos, camposOpciones);
+    // const validarFormulario = prevenirCreacionPDF(datosFormulario, camposOpciones)
 
-    if(!validacionAlumno || ! validarFormulario) {
-        mostrarAlerta("Falta llenar algún dato")
-        return;
-    }
+    // if(!validacionAlumno || ! validarFormulario) {
+    //     mostrarAlerta("Falta llenar algún dato")
+    //     return;
+    // }
     // Llama a la función para generar el PDF
     fetch("http://localhost:3000/api/guardarDatos", {
         method: 'POST',
@@ -199,6 +199,7 @@ function generarPDF(dataSocioeconomico, dataGastos) {
     
     generarPrimerPagina( doc, dataSocioeconomico);
     generarSegundaPagina(doc, dataGastos);
+    generarTercerPagina(doc, dataSocioeconomico);
     
     doc.save(`Estudio_Socioeconomico_${dataSocioeconomico.noControl}.pdf`);
 }

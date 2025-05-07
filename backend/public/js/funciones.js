@@ -1,9 +1,7 @@
 export function generarPrimerPagina(doc, data) {
-
     const img = new Image();
     img.src = '../img/LOGO.png';
-
-    
+  
     // Configuración de dimensiones
     const margin = 8;
     const imgWidth = 55;
@@ -337,253 +335,131 @@ export function generarSegundaPagina(doc, dataGastos) {
         currentY += sectionSpacing;
     }
 
-    // 2. BIENES Y SERVICIOS (Ahora primero)
-    // doc.setFontSize(12);
-    // doc.setFont('helvetica', 'bold');
-    // doc.text("II. BIENES Y SERVICIOS", margin, currentY);
-    // currentY += lineHeight;
-
-    // doc.setFontSize(10);
-    // doc.setFont('helvetica', 'normal');
-
-    // const bienes = dataGastos.bienesYServicios || {};
-    // const servicios = [
-    //     { label: "Lavadora", value: bienes.lavadora },
-    //     { label: "Computadora", value: bienes.computadora },
-    //     { label: "Celular", value: bienes.celular },
-    //     { label: "Automóvil", value: bienes.automovil },
-    //     { label: "Calentador", value: bienes.calentador }
-    // ];
-
-    // // Filtrar solo items con valor definido
-    // const serviciosConValor = servicios.filter(item => item.value);
-
-    // if (serviciosConValor.length > 0) {
-    //     const cellHeight = lineHeight + 2;
-    //     const cellWidth1 = 60;
-    //     const cellWidth2 = 60;
-    
-    //     // Encabezado
-    //     doc.setFont('helvetica', 'bold');
-    //     doc.text("Bien/Servicio", margin + 2, currentY + 5);
-    //     doc.text("Respuesta", margin + cellWidth1 + 2, currentY + 5);
-    
-    //     doc.rect(margin, currentY, cellWidth1, cellHeight);
-    //     doc.rect(margin + cellWidth1, currentY, cellWidth2, cellHeight);
-    
-    //     currentY += cellHeight;
-    
-    //     // Celdas de contenido
-    //     doc.setFont('helvetica', 'normal');
-    //     serviciosConValor.forEach((item) => {
-    //         doc.text(item.label, margin + 2, currentY + 5);
-    //         doc.text(String(item.value), margin + cellWidth1 + 2, currentY + 5);
-    
-    //         doc.rect(margin, currentY, cellWidth1, cellHeight);
-    //         doc.rect(margin + cellWidth1, currentY, cellWidth2, cellHeight);
-    
-    //         currentY += cellHeight;
-    //     });
-    
-    //     currentY += sectionSpacing;
-        
-    // } else {
-    //     doc.text("No se registraron bienes", margin, currentY);
-    //     currentY += sectionSpacing;
-    // }
-
-    // // 3. DISTRIBUCIÓN DE GASTOS MENSUALES (Ahora segundo)
-    // doc.setFontSize(12);
-    // doc.setFont('helvetica', 'bold');
-    // doc.text("III. DISTRIBUCIÓN DE GASTOS MENSUALES", margin, currentY);
-    // currentY += lineHeight;
-
-    // doc.setFontSize(9);
-    // doc.setFont('helvetica', 'normal');
-
-    // const gastos = dataGastos.distribucionGastos || {};
-    // const gastosLista = [
-    //     { label: "Predial", value: gastos.predial },
-    //     { label: "Luz", value: gastos.luz },
-    //     { label: "Alimentación", value: gastos.alimentacion },
-    //     { label: "Renta", value: gastos.renta },
-    //     { label: "Agua", value: gastos.agua },
-    //     { label: "Transporte", value: gastos.transporte },
-    //     { label: "Teléfono", value: gastos.telefono },
-    //     { label: "Gas", value: gastos.gas },
-    //     { label: "Vestido", value: gastos.vestido },
-    //     { label: "Educación", value: gastos.educacion },
-    //     { label: "Diversiones", value: gastos.diversiones },
-    //     { label: "Otros", value: gastos.otros }
-    // ];
-
-    // // Definir anchos de columnas
-    // const colConceptoWidth = 80;
-    // const colMontoWidth = 40;
-    // const colHeight = lineHeight + 2;
-
-    // // Cabecera con bordes
-    // doc.setFont(undefined, 'bold');
-    // doc.text("Concepto", margin + 2, currentY + 5);
-    // doc.text("Monto", margin + colConceptoWidth + 2, currentY + 5);
-    // doc.rect(margin, currentY, colConceptoWidth, colHeight);
-    // doc.rect(margin + colConceptoWidth, currentY, colMontoWidth, colHeight);
-    // currentY += colHeight;
-
-    // // Filas de gastos con bordes
-    // doc.setFont(undefined, 'normal');
-    // gastosLista.forEach(item => {
-    //     if (item.value || item.value === 0) {
-    //         const monto = `$${parseFloat(item.value || 0).toFixed(2)}`;
-    //         doc.text(item.label, margin + 2, currentY + 5);
-    //         doc.text(monto, margin + colConceptoWidth + colMontoWidth - 2, currentY + 5, { align: 'right' });
-
-    //         doc.rect(margin, currentY, colConceptoWidth, colHeight);
-    //         doc.rect(margin + colConceptoWidth, currentY, colMontoWidth, colHeight);
-    //         currentY += colHeight;
-    //     }
-    // });
-
-    // // Total con bordes
-    // doc.setFont(undefined, 'bold');
-    // const total = parseFloat(gastos.total || gastosLista.reduce((sum, item) => sum + (parseFloat(item.value) || 0), 0));
-
-    // doc.text("TOTAL GASTOS", margin + 2, currentY + 5);
-    // doc.text(`$${total.toFixed(2)}`, margin + colConceptoWidth + colMontoWidth - 2, currentY + 5, { align: 'right' });
-
-    // doc.rect(margin, currentY, colConceptoWidth, colHeight);
-    // doc.rect(margin + colConceptoWidth, currentY, colMontoWidth, colHeight);
-    // currentY += sectionSpacing * 2;
-
-
 
     doc.setFontSize(12);
-doc.setFont('helvetica', 'bold');
-doc.text("II. BIENES Y SERVICIOS", margin, currentY);
-currentY += lineHeight;
-
-doc.setFontSize(10);
-doc.setFont('helvetica', 'normal');
-
-const bienes = dataGastos.bienesYServicios || {};
-const servicios = [
-    { label: "Lavadora", value: bienes.lavadora },
-    { label: "Computadora", value: bienes.computadora },
-    { label: "Celular", value: bienes.celular },
-    { label: "Automóvil", value: bienes.automovil },
-    { label: "Calentador", value: bienes.calentador }
-];
-
-// Filtrar solo items con valor definido
-const serviciosConValor = servicios.filter(item => item.value);
-
-const cellHeight2 = lineHeight + 2;
-const cellWidth1 = 40; // reducido
-const cellWidth2 = 30; // reducido
-
-const tableBienesY = currentY;
-let maxRows = 0;
-
-if (serviciosConValor.length > 0) {
-    // Encabezado
     doc.setFont('helvetica', 'bold');
-    doc.text("Bien/Servicio", margin + 2, currentY + 5);
-    doc.text("Respuesta", margin + cellWidth1 + 2, currentY + 5);
+    doc.text("II. BIENES Y SERVICIOS", margin, currentY);
+    currentY += lineHeight;
 
-    doc.rect(margin, currentY, cellWidth1, cellHeight2);
-    doc.rect(margin + cellWidth1, currentY, cellWidth2, cellHeight2);
-
-    currentY += cellHeight2;
-
-    // Celdas de contenido
+    doc.setFontSize(10);
     doc.setFont('helvetica', 'normal');
-    serviciosConValor.forEach((item) => {
-        doc.text(item.label, margin + 2, currentY + 5);
-        doc.text(String(item.value), margin + cellWidth1 + 2, currentY + 5);
+
+    const bienes = dataGastos.bienesYServicios || {};
+    const servicios = [
+        { label: "Lavadora", value: bienes.lavadora },
+        { label: "Computadora", value: bienes.computadora },
+        { label: "Celular", value: bienes.celular },
+        { label: "Automóvil", value: bienes.automovil },
+        { label: "Calentador", value: bienes.calentador }
+    ];
+
+    // Filtrar solo items con valor definido
+    const serviciosConValor = servicios.filter(item => item.value);
+
+    const cellHeight2 = lineHeight + 2;
+    const cellWidth1 = 40; // reducido
+    const cellWidth2 = 30; // reducido
+
+    const tableBienesY = currentY;
+    let maxRows = 0;
+
+    if (serviciosConValor.length > 0) {
+        // Encabezado
+        doc.setFont('helvetica', 'bold');
+        doc.text("Bien/Servicio", margin + 2, currentY + 5);
+        doc.text("Respuesta", margin + cellWidth1 + 2, currentY + 5);
 
         doc.rect(margin, currentY, cellWidth1, cellHeight2);
         doc.rect(margin + cellWidth1, currentY, cellWidth2, cellHeight2);
 
         currentY += cellHeight2;
+
+        // Celdas de contenido
+        doc.setFont('helvetica', 'normal');
+        serviciosConValor.forEach((item) => {
+            doc.text(item.label, margin + 2, currentY + 5);
+            doc.text(String(item.value), margin + cellWidth1 + 2, currentY + 5);
+
+            doc.rect(margin, currentY, cellWidth1, cellHeight2);
+            doc.rect(margin + cellWidth1, currentY, cellWidth2, cellHeight2);
+
+            currentY += cellHeight2;
+        });
+
+        maxRows = serviciosConValor.length + 1;
+
+    } else {
+        doc.text("No se registraron bienes", margin, currentY);
+        currentY += sectionSpacing;
+    }
+
+    // Tabla III a la derecha
+    const startXGastos = margin + cellWidth1 + cellWidth2 + 10; // más cerca
+
+    let currentYGastos = tableBienesY;
+
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'bold');
+    doc.text("III. DISTRIBUCIÓN DE GASTOS MENSUALES", startXGastos, currentYGastos);
+    currentYGastos += lineHeight;
+
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+
+    const gastos = dataGastos.distribucionGastos || {};
+    const gastosLista = [
+        { label: "Predial", value: gastos.predial },
+        { label: "Luz", value: gastos.luz },
+        { label: "Alimentación", value: gastos.alimentacion },
+        { label: "Renta", value: gastos.renta },
+        { label: "Agua", value: gastos.agua },
+        { label: "Transporte", value: gastos.transporte },
+        { label: "Teléfono", value: gastos.telefono },
+        { label: "Gas", value: gastos.gas },
+        { label: "Vestido", value: gastos.vestido },
+        { label: "Educación", value: gastos.educacion },
+        { label: "Diversiones", value: gastos.diversiones },
+        { label: "Otros", value: gastos.otros }
+    ];
+
+    const colConceptoWidth = 60; // reducido
+    const colMontoWidth = 30;    // reducido
+    const colHeight = lineHeight + 2;
+
+    // Cabecera
+    doc.setFont(undefined, 'bold');
+    doc.text("Concepto", startXGastos + 2, currentYGastos + 5);
+    doc.text("Monto", startXGastos + colConceptoWidth + 2, currentYGastos + 5);
+    doc.rect(startXGastos, currentYGastos, colConceptoWidth, colHeight);
+    doc.rect(startXGastos + colConceptoWidth, currentYGastos, colMontoWidth, colHeight);
+    currentYGastos += colHeight;
+
+    // Filas
+    doc.setFont(undefined, 'normal');
+    gastosLista.forEach(item => {
+        if (item.value || item.value === 0) {
+            const monto = `$${parseFloat(item.value || 0).toFixed(2)}`;
+            doc.text(item.label, startXGastos + 2, currentYGastos + 5);
+            doc.text(monto, startXGastos + colConceptoWidth + colMontoWidth - 2, currentYGastos + 5, { align: 'right' });
+
+            doc.rect(startXGastos, currentYGastos, colConceptoWidth, colHeight);
+            doc.rect(startXGastos + colConceptoWidth, currentYGastos, colMontoWidth, colHeight);
+            currentYGastos += colHeight;
+        }
     });
 
-    maxRows = serviciosConValor.length + 1;
+    // Total
+    doc.setFont(undefined, 'bold');
+    const total = parseFloat(gastos.total || gastosLista.reduce((sum, item) => sum + (parseFloat(item.value) || 0), 0));
 
-} else {
-    doc.text("No se registraron bienes", margin, currentY);
-    currentY += sectionSpacing;
-}
+    doc.text("TOTAL GASTOS", startXGastos + 2, currentYGastos + 5);
+    doc.text(`$${total.toFixed(2)}`, startXGastos + colConceptoWidth + colMontoWidth - 2, currentYGastos + 5, { align: 'right' });
 
-// Tabla III a la derecha
-const startXGastos = margin + cellWidth1 + cellWidth2 + 10; // más cerca
+    doc.rect(startXGastos, currentYGastos, colConceptoWidth, colHeight);
+    doc.rect(startXGastos + colConceptoWidth, currentYGastos, colMontoWidth, colHeight);
 
-let currentYGastos = tableBienesY;
-
-doc.setFontSize(12);
-doc.setFont('helvetica', 'bold');
-doc.text("III. DISTRIBUCIÓN DE GASTOS MENSUALES", startXGastos, currentYGastos);
-currentYGastos += lineHeight;
-
-doc.setFontSize(9);
-doc.setFont('helvetica', 'normal');
-
-const gastos = dataGastos.distribucionGastos || {};
-const gastosLista = [
-    { label: "Predial", value: gastos.predial },
-    { label: "Luz", value: gastos.luz },
-    { label: "Alimentación", value: gastos.alimentacion },
-    { label: "Renta", value: gastos.renta },
-    { label: "Agua", value: gastos.agua },
-    { label: "Transporte", value: gastos.transporte },
-    { label: "Teléfono", value: gastos.telefono },
-    { label: "Gas", value: gastos.gas },
-    { label: "Vestido", value: gastos.vestido },
-    { label: "Educación", value: gastos.educacion },
-    { label: "Diversiones", value: gastos.diversiones },
-    { label: "Otros", value: gastos.otros }
-];
-
-const colConceptoWidth = 60; // reducido
-const colMontoWidth = 30;    // reducido
-const colHeight = lineHeight + 2;
-
-// Cabecera
-doc.setFont(undefined, 'bold');
-doc.text("Concepto", startXGastos + 2, currentYGastos + 5);
-doc.text("Monto", startXGastos + colConceptoWidth + 2, currentYGastos + 5);
-doc.rect(startXGastos, currentYGastos, colConceptoWidth, colHeight);
-doc.rect(startXGastos + colConceptoWidth, currentYGastos, colMontoWidth, colHeight);
-currentYGastos += colHeight;
-
-// Filas
-doc.setFont(undefined, 'normal');
-gastosLista.forEach(item => {
-    if (item.value || item.value === 0) {
-        const monto = `$${parseFloat(item.value || 0).toFixed(2)}`;
-        doc.text(item.label, startXGastos + 2, currentYGastos + 5);
-        doc.text(monto, startXGastos + colConceptoWidth + colMontoWidth - 2, currentYGastos + 5, { align: 'right' });
-
-        doc.rect(startXGastos, currentYGastos, colConceptoWidth, colHeight);
-        doc.rect(startXGastos + colConceptoWidth, currentYGastos, colMontoWidth, colHeight);
-        currentYGastos += colHeight;
-    }
-});
-
-// Total
-doc.setFont(undefined, 'bold');
-const total = parseFloat(gastos.total || gastosLista.reduce((sum, item) => sum + (parseFloat(item.value) || 0), 0));
-
-doc.text("TOTAL GASTOS", startXGastos + 2, currentYGastos + 5);
-doc.text(`$${total.toFixed(2)}`, startXGastos + colConceptoWidth + colMontoWidth - 2, currentYGastos + 5, { align: 'right' });
-
-doc.rect(startXGastos, currentYGastos, colConceptoWidth, colHeight);
-doc.rect(startXGastos + colConceptoWidth, currentYGastos, colMontoWidth, colHeight);
-
-// Ajustar currentY para continuar abajo de ambas tablas
-currentY = Math.max(currentY, currentYGastos) + sectionSpacing * 2;
-
-
-
+    // Ajustar currentY para continuar abajo de ambas tablas
+    currentY = Math.max(currentY, currentYGastos) + sectionSpacing * 2;
 
     // --- IV. ACTIVIDADES DEL PLANTEL ---
     doc.setFontSize(12);
@@ -626,9 +502,6 @@ currentY = Math.max(currentY, currentYGastos) + sectionSpacing * 2;
     doc.text(observaciones.observaciones || '', 65, currentY);
     doc.line(65, currentY + 1, 180, currentY + 1);
     currentY += lineHeight + 2;
-
-    // Campo 2
-    // Línea horizontal con tres campos alineados
 
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(10);
@@ -699,4 +572,141 @@ currentY = Math.max(currentY, currentYGastos) + sectionSpacing * 2;
     doc.setFontSize(9);
     doc.text("Jefe del área de vinculación", 145, positionY);
     
+}
+
+export function generarTercerPagina(doc, data) {
+    doc.addPage();
+// Definir estilos generales
+    doc.setFont("helvetica");
+    doc.setFontSize(10);
+    doc.setLineWidth(0.3);
+
+    // Título
+    doc.setFontSize(11);
+    doc.setFont(undefined, 'bold');
+    doc.text("CECATI NÚM. 12", 10, 10);
+    doc.setFontSize(10);
+    doc.setFont(undefined, 'normal');
+    doc.text("APLICACIÓN DE ESTUDIO", 10, 14);
+    doc.setFont(undefined, 'bold');
+    doc.text("SOCIOECONÓMICO", 10, 18);
+
+    // Bordes principales
+    doc.rect(8, 6, 190, 80); // borde principal
+
+    // Columnas principales
+    doc.line(60, 6, 60, 20); // divide CECATI y NÚM. CONTROL
+    doc.line(100, 6, 100, 86); // divide NÚM. CONTROL y FOLIO
+    doc.line(150, 6, 150, 86); // divide FOLIO y segundo FOLIO
+
+    // Primera fila (NÚM. CONTROL y FOLIO)
+    doc.setFontSize(10);
+    doc.setFont(undefined, 'bold');
+    doc.text("NÚM. CONTROL", 65, 10);
+    doc.text(data.noControl, 68, 18)
+    doc.line(60, 13, 100, 13)
+    doc.text("FOLIO", 115, 10);
+    doc.line(100, 13, 150, 13)
+    doc.text("FOLIO", 165, 10);
+    doc.line(150, 13, 198, 13)
+
+    doc.line(8, 20, 198, 20); 
+
+    doc.setFont(undefined, 'normal');
+    doc.setFontSize(9);
+
+    doc.text("ALUMNO (A):", 10, 25);
+    doc.setFontSize(12)
+    doc.text(data.nombre, 10, 35)
+    doc.line(8, 37, 198, 37);
+
+    doc.setFontSize(9);
+    doc.text("ESPECIALIDAD:", 10, 42);
+    doc.setFontSize(10);
+    doc.text(data.curso.especialidad, 10, 50);
+    doc.line(8, 53, 150, 53);
+
+   // CURSO
+    doc.setFontSize(9);
+    doc.text("CURSO:", 10, 58);
+    doc.setFontSize(12);
+    doc.text(data.curso.nombreCurso, 10, 65);
+    doc.line(8, 68, 100, 68);
+
+    // GRUPO y HORARIO
+    doc.line(60, 68, 60, 86);
+
+    doc.setFontSize(9);
+    doc.text("GRUPO:", 10, 73);
+    doc.setFontSize(12);
+    doc.text(data.curso.grupo, 10, 80);
+
+    doc.setFontSize(9);
+    doc.text("HORARIO:", 65, 73);
+    doc.setFontSize(12);
+    doc.text(data.curso.horario, 65, 80);
+    doc.text("FECHA:", 115, 25);
+    doc.line(100, 26, 198, 26);
+
+    doc.text("GESTIONA:", 115, 42);
+    doc.line(100, 43, 150, 43);
+
+    // doc.line(100, 53, 150, 53);
+    doc.text("FIRMA:", 115, 58);
+    doc.line(100, 59, 150, 59);
+
+    // Secciones derecha (RECIBIDO POR, SELLO)
+    doc.text("RECIBIDO POR:", 165, 25);
+
+    doc.text("SELLO", 165, 60);
+
+
+    doc.setFontSize(11);
+    doc.setFont(undefined, 'bold');
+    doc.text("SOLICITUD DE DESCUENTO", 85, 165);
+    
+    doc.setFontSize(10);
+    doc.setFont(undefined, 'normal');
+    doc.text("Ciudad de México, a _____ de __________ de 2025.", 120, 175);
+    
+    doc.setFont(undefined, 'bold');
+    doc.text("JOEL LÓPEZ LÓPEZ", 20, 185);
+    doc.text("DIRECTOR DEL CECATI 12", 20, 190);
+    
+    doc.setFont(undefined, 'normal');
+    doc.text("Yo:", 20, 200);
+    doc.text(data.nombre, 25, 200)
+    // doc.line(30, 200, 190, 200); // línea para nombre
+    
+    doc.text("Por este medio me permito solicitar a usted un descuento para el curso:", 20, 210);
+    doc.text(data.curso.nombreCurso, 20, 215)
+    // doc.line(20, 215, 190, 215); // línea curso
+    // doc.line(20, 220, 190, 220); // línea curso 2
+    
+    doc.text("Con fecha de inicio", 20, 230);
+    doc.line(60, 230, 100, 230); // fecha inicio
+    doc.text("y término", 105, 230);
+    doc.line(125, 230, 190, 230); // fecha término
+    
+    doc.text("En el horario de", 20, 240);
+    doc.line(55, 240, 90, 240); // hora inicio
+    doc.text("a", 95, 240);
+    doc.line(100, 240, 135, 240); // hora fin
+    doc.text("los días", 140, 240);
+    doc.line(160, 240, 190, 240); // días
+    
+    doc.text("Con motivo de", 20, 250);
+    doc.line(60, 250, 190, 250); // motivo
+    doc.line(20, 255, 190, 255); // motivo continuación
+    
+    doc.text("Esperando verme favorecido, quedo de usted.", 20, 265);
+    
+    doc.setFont(undefined, 'bold');
+    doc.text("ATENTAMENTE", 85, 285);
+    
+    doc.line(70, 295, 140, 295); // línea firma
+    doc.text("Nombre y Firma", 85, 300);
+    
+    
+
 }
