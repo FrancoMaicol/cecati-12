@@ -69,7 +69,7 @@ app.post('/api/guardarDatos', async (req, res) => {
           VALUES ( $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32 )`;
   
       const valores = [
-          noControl, nombre, edad, sexo, estadoCivil, escolaridad, calleDomicilio, numeroDomicilio, colonia, estado, cp, telefono, tipoSangre, alergias, tipoDiscapacidad, especialidad, grupo, horario, nombreCurso, pregunta, opcionOcupacion, ocupacionHorario, salario, razonSocial, domicilioEmpresa, casa, otra, recamaras, sala, cocina, comedor, wc 
+          noControl, nombre, edad, sexo, estadoCivil, calleDomicilio, numeroDomicilio, colonia, estado, cp, telefono, tipoSangre, alergias, tipoDiscapacidad, escolaridad, especialidad, grupo, horario, nombreCurso, pregunta, opcionOcupacion, ocupacionHorario, salario, razonSocial, domicilioEmpresa, casa, otra, recamaras, sala, cocina, comedor, wc 
         ];
         
       // Insertar los datos en la base de datos

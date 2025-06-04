@@ -142,13 +142,13 @@ function guardarAlumno(e) {
         "hogarOtro",
         "otra"
     ]
-    // const validacionAlumno = prevenirCreacionPDF(datosAlumnos, camposOpciones);
-    // const validarFormulario = prevenirCreacionPDF(datosFormulario, camposOpciones)
+    const validacionAlumno = prevenirCreacionPDF(datosAlumnos, camposOpciones);
+    const validarFormulario = prevenirCreacionPDF(datosFormulario, camposOpciones)
 
-    // if(!validacionAlumno || ! validarFormulario) {
-    //     mostrarAlerta("Falta llenar algún dato")
-    //     return;
-    // }
+    if(!validacionAlumno || ! validarFormulario) {
+        mostrarAlerta("Falta llenar algún dato")
+        return;
+    }
     // Llama a la función para generar el PDF
     fetch("http://localhost:3000/api/guardarDatos", {
         method: 'POST',
@@ -163,8 +163,6 @@ function guardarAlumno(e) {
         generarPDF(datosAlumnos, datosFormulario);
     })
     .catch(error => console.error("Error al guardar datos", error))
-
-  
 }
 
 function mostrarAlerta(mensaje) {

@@ -360,8 +360,7 @@ export function generarSegundaPagina(doc, dataGastos) {
     const cellWidth1 = 40; // reducido
     const cellWidth2 = 30; // reducido
 
-    const tableBienesY = currentY;
-    let maxRows = 0;
+    const tableBienesY = currentY -6;
 
     if (serviciosConValor.length > 0) {
         // Encabezado
@@ -386,7 +385,7 @@ export function generarSegundaPagina(doc, dataGastos) {
             currentY += cellHeight2;
         });
 
-        maxRows = serviciosConValor.length + 1;
+        // maxRows = serviciosConValor.length + 1;
 
     } else {
         doc.text("No se registraron bienes", margin, currentY);
@@ -464,43 +463,43 @@ export function generarSegundaPagina(doc, dataGastos) {
     // --- IV. ACTIVIDADES DEL PLANTEL ---
     doc.setFontSize(12);
     doc.setFont('helvetica', 'bold');
-    doc.text("IV. ACTIVIDADES DEL PLANTEL", 15, currentY);
+    doc.text("IV. ACTIVIDADES DEL PLANTEL", 15, currentY -10);
     currentY += lineHeight;
 
     doc.setFont('helvetica', 'normal');
     const actividades = dataGastos.actividades || {};
 
     // Campo 1
-    doc.text("Relación con el trabajo:", 15, currentY);
-    doc.text(actividades.relacionTrabajo || '', 60, currentY);
-    doc.line(60, currentY + 1, 140, currentY + 1);
+    doc.text("Relación con el trabajo:", 15, currentY - 10);
+    doc.text(actividades.relacionTrabajo || '', 60, currentY - 10);
+    doc.line(60, currentY - 10, 75, currentY - 10);
     currentY += lineHeight;
 
     // Campo 2
-    doc.text("Beneficios esperados de la capacitación:", 15, currentY);
-    doc.text(actividades.beneficiosCapacitacion || '', 92, currentY);
-    doc.line(92, currentY + 1, 100, currentY + 1);
+    doc.text("Beneficios esperados de la capacitación:", 15, currentY - 10);
+    doc.text(actividades.beneficiosCapacitacion || '', 93, currentY - 10);
+    doc.line(92, currentY - 10, 105, currentY - 10);
     currentY += lineHeight;
 
     // Campo 3
-    doc.text("Motivo de participación:", 15, currentY);
-    doc.text(actividades.motivoParticipacion || '', 60, currentY);
-    doc.line(60, currentY + 1, 100, currentY + 1);
+    doc.text("Motivo de participación:", 15, currentY - 10);
+    doc.text(actividades.motivoParticipacion || '', 60, currentY - 11);
+    doc.line(60, currentY - 10, 110, currentY - 10);
     currentY += sectionSpacing;
 
     // --- V. OBSERVACIONES ---
     doc.setFontSize(10);
     doc.setFont('helvetica', 'bold');
-    doc.text("V. OBSERVACIONES", 15, currentY);
+    doc.text("V. OBSERVACIONES", 15, currentY - 15);
     currentY += lineHeight;
 
     doc.setFont('helvetica', 'normal');
     const observaciones = dataGastos.observaciones || {};
 
     // Campo 1
-    doc.text("Observaciones generales:", 15, currentY);
-    doc.text(observaciones.observaciones || '', 65, currentY);
-    doc.line(65, currentY + 1, 180, currentY + 1);
+    doc.text("Observaciones generales:", 15, currentY - 15);
+    doc.text(observaciones.observaciones || '', 59, currentY - 16);
+    doc.line(59, currentY - 15, 130, currentY - 15);
     currentY += lineHeight + 2;
 
     doc.setFont('helvetica', 'normal');
@@ -509,19 +508,19 @@ export function generarSegundaPagina(doc, dataGastos) {
     const y = currentY; // mantener la misma línea
 
     // Campo 1: Porcentaje autorizado
-    doc.text("Porcentaje autorizado:", 15, y);
-    doc.text(observaciones.porcentajeAutorizado ? observaciones.porcentajeAutorizado + '%' : '', 52, y);
-    doc.line(52, y + 1, 70, y + 1);
+    doc.text("Porcentaje autorizado:", 15, y - 16);
+    doc.text(observaciones.porcentajeAutorizado ? observaciones.porcentajeAutorizado + '%' : '', 52, y - 17);
+    doc.line(52, y - 16, 70, y - 16);
 
     // Campo 2: Número de baucher
-    doc.text("Número de baucher:", 75, y);
-    doc.text(observaciones.noBaucher || '', 107, y);
-    doc.line(107, y + 1, 137, y + 1);
+    doc.text("Número de baucher:", 75, y - 16);
+    doc.text(observaciones.noBaucher || '', 109, y - 17);
+    doc.line(108, y - 16, 127, y - 16);
 
     // Campo 3: Becas autorizadas
-    doc.text("Becas autorizadas:", 147, y);
-    doc.text(observaciones.becasAutorizadas || '', 177, y);
-    doc.line(177, y + 1, 200, y + 1);
+    doc.text("Becas autorizadas:", 147, y - 16);
+    doc.text(observaciones.becasAutorizadas || '', 178, y - 17);
+    doc.line(178, y - 16, 200, y - 16);
 
     // Avanzar una línea para la siguiente sección
     currentY += sectionSpacing;
@@ -532,45 +531,38 @@ export function generarSegundaPagina(doc, dataGastos) {
 
     const lineLength = 40;
     const textOffset = 2;
+    // const offsetY = -15;
     const firmaY = currentY + 2; // Altura común para todas las firmas
     const lineY = firmaY;
     const nameY = lineY + 3 + textOffset;
     const positionY = nameY + 5;
 
-    // === Firma 1: Aplicador ===
-    const firma1X = 15;
-    const firma1Width = lineLength;
-    const firma1CenterX = firma1X + firma1Width / 2;
-
     doc.setFontSize(12);
     doc.setFont('helvetica', 'bold');
 
     const aplicadorNombre = firmantes.aplicador || "";
-    const aplicadorNombreWidth = doc.getTextWidth(aplicadorNombre);
-    doc.text(aplicadorNombre, firma1CenterX - aplicadorNombreWidth / 2, nameY);
-
-    doc.line(firma1X, lineY, firma1X + firma1Width, lineY); // Línea firma
-
+   
+    doc.line(15, lineY - 18, 15 + lineLength, lineY - 18);
     doc.setFontSize(11);
-    const aplicadorCargo = "Aplicador";
-    const aplicadorCargoWidth = doc.getTextWidth(aplicadorCargo);
-    doc.text(aplicadorCargo, firma1CenterX - aplicadorCargoWidth / 2, positionY);
+    doc.setFont('helvetica', 'bold');
+    doc.text(aplicadorNombre || '', 18, lineY - 19)
+    doc.text("Aplicador", 23, lineY - 14)
     
     // === Firma 2: Director del plantel ===
-    doc.line(70, lineY, 70 + lineLength, lineY);
+    doc.line(70, lineY - 18, 70 + lineLength, lineY - 18);
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(11);
-    doc.text("Lic. Joel López López", 70, nameY);
+    doc.text("Lic. Joel López López", 70, nameY - 19);
     doc.setFontSize(9);
-    doc.text("Director del plantel", 78, positionY);
+    doc.text("Director del plantel", 78, positionY - 19);
     
     // === Firma 3: Jefe de área de vinculación ===
-    doc.line(148, lineY, 148 + lineLength, lineY);
+    doc.line(148, lineY - 18, 148 + lineLength, lineY - 18);
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(11);
-    doc.text("Lic. Mtro. J. Mauricio Vela Segura", 135, nameY);
+    doc.text("Mtro. J. Mauricio Vela Segura", 135, nameY - 19);
     doc.setFontSize(9);
-    doc.text("Jefe del área de vinculación", 145, positionY);
+    doc.text("Jefe del área de vinculación", 145, positionY - 19);
     
 }
 
@@ -656,7 +648,7 @@ export function generarTercerPagina(doc, data) {
     doc.line(100, 59, 150, 59);
 
     // Secciones derecha (RECIBIDO POR, SELLO)
-    doc.text("RECIBIDO POR:", 165, 25);
+    doc.text("RECIBIDO POR:", 155, 25);
 
     doc.text("SELLO", 165, 60);
 
@@ -679,24 +671,24 @@ export function generarTercerPagina(doc, data) {
     // doc.line(30, 200, 190, 200); // línea para nombre
     
     doc.text("Por este medio me permito solicitar a usted un descuento para el curso:", 20, 210);
-    doc.text(data.curso.nombreCurso, 20, 215)
-    // doc.line(20, 215, 190, 215); // línea curso
-    // doc.line(20, 220, 190, 220); // línea curso 2
+    // doc.text(data.curso.nombreCurso, 20, 215)
+    doc.line(20, 215, 190, 215); // línea curso
+    doc.line(20, 220, 190, 220); // línea curso 2
     
     doc.text("Con fecha de inicio", 20, 230);
-    doc.line(60, 230, 100, 230); // fecha inicio
-    doc.text("y término", 105, 230);
-    doc.line(125, 230, 190, 230); // fecha término
+    doc.line(51, 230, 100, 230); // fecha inicio
+    doc.text("y término", 103, 230);
+    doc.line(118, 230, 190, 230); // fecha término
     
     doc.text("En el horario de", 20, 240);
-    doc.line(55, 240, 90, 240); // hora inicio
-    doc.text("a", 95, 240);
-    doc.line(100, 240, 135, 240); // hora fin
+    doc.line(45, 240, 90, 240); // hora inicio
+    doc.text("a", 92, 240);
+    doc.line(95, 240, 135, 240); // hora fin
     doc.text("los días", 140, 240);
-    doc.line(160, 240, 190, 240); // días
+    doc.line(153, 240, 190, 240); // días
     
     doc.text("Con motivo de", 20, 250);
-    doc.line(60, 250, 190, 250); // motivo
+    doc.line(43, 250, 190, 250); // motivo
     doc.line(20, 255, 190, 255); // motivo continuación
     
     doc.text("Esperando verme favorecido, quedo de usted.", 20, 265);
@@ -705,8 +697,6 @@ export function generarTercerPagina(doc, data) {
     doc.text("ATENTAMENTE", 85, 285);
     
     doc.line(70, 295, 140, 295); // línea firma
-    doc.text("Nombre y Firma", 85, 300);
-    
-    
+    doc.text("Nombre y Firma", 85, 300); 
 
 }
