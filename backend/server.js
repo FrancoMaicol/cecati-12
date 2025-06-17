@@ -86,10 +86,29 @@ app.post('/api/guardarDatos', async (req, res) => {
       ];
 
       console.log("Valores que se intentan insertar en datos_formulario:");
-console.log(valoresFormulario);
+      console.log(valoresFormulario);
 
-      await pool.query(formularioQuery, valoresFormulario)
-  
+      await pool.query(formularioQuery, valoresFormulario);
+      
+      if(habitantes && habitantes.length > 0) {
+      for (const habitante of habitantes) {
+        const insertHabitanteQuery = `
+          INSERT INTO datos_habitantes 
+          (no_control, nombre, parentesco, edad, escolaridad, ocupacion, ingreso_mensual)
+          VALUES ($1, $2, $3, $4, $5, $6, $7)
+        `;
+        const valoresHabitante = [
+          noControl,
+          habitante.nombre,
+          habitante.parentesco,
+          parseInt(habitante.edad),
+          habitante.escolaridad,
+          habitante.ocupacion,
+          parseFloat(habitante.ingresoMensual)
+        ];
+        await pool.query(insertHabitanteQuery, valoresHabitante);
+      }
+      }
       // Enviar una respuesta de éxito
       res.status(200).json({message: 'Datos guardados correctamente'});
     } catch (error) {
