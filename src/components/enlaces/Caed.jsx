@@ -5,7 +5,7 @@ import caracteristicas from '../../assets/body/caracteristicas.png'
 import discapacidad from '../../assets/body/discapacidad.png'
 import inscripcion from '../../assets/body/inscripcion.png'
 import ubicacion from '../../assets/body/ubicacion.png'
-import Carrusel from '../body/carrusel'
+import Carrusel from '../body/Carrusel'
 
 export default function Caed() {
     return (
