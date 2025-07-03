@@ -6,6 +6,7 @@ import discapacidad from '../../assets/body/discapacidad.png'
 import inscripcion from '../../assets/body/inscripcion.png'
 import ubicacion from '../../assets/body/ubicacion.png'
 import Carrusel from './body/Carrusel'
+
 export default function Caed() {
     return (
         <main className="mt-10">
