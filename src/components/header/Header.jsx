@@ -57,7 +57,7 @@ export default function Header() {
       <div className="bg-[#A48138] py-8" >
         <nav className="flex justify-evenly text-white">
           <Link to="/caed">CAED</Link>
-          <Link href="#">Oferta Educativa</Link>
+          <Link to="/especialidades">Especialidades</Link>
           <Link href="#">Contacto</Link>
           <Link href="#">Correo</Link>
         </nav>
